@@ -12,7 +12,30 @@ public class SQLDatabaseEngine extends DatabaseEngine {
 	@Override
 	String search(String text) throws Exception {
 		//Write your code here
-		return null;
+		String result = null;
+		try {
+		Connection connection=getConnection();
+		PreparedStatement stmt = connection.prepareStatement("SELECT keyword, response FROM phrase where keyword like concat('%', ?, '%')");
+		stmt.setString(1, text);
+		ResultSet rs = stmt.executeQuery();
+		if (rs.next()) {
+//			System.out.println("ID: " + rs.getInt(1) + "\tName: " + rs.getString(2) + "\tPhone: "+ rs.getString(3));
+			result=rs.getString(2);
+		} else {
+			throw new Exception("NOT FOUND");
+		}
+		rs.close();
+		stmt.close();
+		connection.close();
+		return result;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		//if (result != null)
+		//	return result;
+		//throw new Exception("NOT FOUND");
+		
 	}
 	
 	
