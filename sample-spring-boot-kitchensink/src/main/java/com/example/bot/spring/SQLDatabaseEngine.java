@@ -21,21 +21,20 @@ public class SQLDatabaseEngine extends DatabaseEngine {
 		if (rs.next()) {
 //			System.out.println("ID: " + rs.getInt(1) + "\tName: " + rs.getString(2) + "\tPhone: "+ rs.getString(3));
 			result=rs.getString(2);
-		} else {
-			throw new Exception("NOT FOUND");
 		}
 		rs.close();
 		stmt.close();
 		connection.close();
-		return result;
-		} catch (Exception e) {
+
+		}catch(Exception e) {
 			System.out.println(e);
+		} 
+		
+		if(result != null) {
+			return result;
 		}
-		
-		//if (result != null)
-		//	return result;
-		//throw new Exception("NOT FOUND");
-		
+		throw new Exception ("NOT FOUND");
+		//return null;
 	}
 	
 	

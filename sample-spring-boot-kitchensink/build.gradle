@@ -22,5 +22,5 @@ dependencies {
 }
 
 test {
-    environment "ec2-23-23-192-242.compute-1.amazonaws.com", "postgres://kzjhkemuepmqqg:d358659482802c6df4105e21cf966a02370fb365228af7754ac4593704231ece@ec2-23-23-192-242.compute-1.amazonaws.com:5432/dbopb7ue4qojhk" 
+    environment "DATABASE_URL", "postgres://kzjhkemuepmqqg:d358659482802c6df4105e21cf966a02370fb365228af7754ac4593704231ece@ec2-23-23-192-242.compute-1.amazonaws.com:5432/dbopb7ue4qojhk" 
 }
